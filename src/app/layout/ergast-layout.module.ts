@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { ErgastLayoutComponent } from './ergast-layout.component';
-import { ContentModule } from '../content/content.module';
-import { HeaderModule } from '../header/header.module';
-import { FooterModule } from '../footer/footer.module';
+import { ContentModule } from '../../@ergast/components/content/content.module';
+import { HeaderModule } from '../../@ergast/components/header/header.module';
+import { FooterModule } from '../../@ergast/components/footer/footer.module';
 
 @NgModule({
   imports: [

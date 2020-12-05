@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { each, isArray, isObject, size } from 'lodash';
 import { ConfigService } from './config.service';
 
-export abstract class HttpApiService {
+export abstract class HttpBaseService {
 
   protected constructor(
     protected http: HttpClient,

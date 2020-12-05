@@ -4,6 +4,6 @@ export class SeasonResponseModel {
   public limit: string;
   public offset: string;
   public total: string;
-  public seasonTable: SeasonTableModel;
+  public SeasonTable: SeasonTableModel;
 
 }

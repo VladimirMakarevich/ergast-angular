@@ -4,6 +4,6 @@ export class DriverStandingResponseModel {
   public limit: string;
   public offset: string;
   public total: string;
-  public standingsTable: StandingsTableModel;
+  public StandingsTable: StandingsTableModel;
 
 }

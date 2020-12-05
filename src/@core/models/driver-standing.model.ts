@@ -6,7 +6,7 @@ export class DriverStandingModel {
   public positionText: string;
   public points: string;
   public wins: string;
-  public driver: DriverModel;
-  public constructors: ConstructorModel[];
+  public Driver: DriverModel;
+  public Constructors: ConstructorModel[];
 
 }

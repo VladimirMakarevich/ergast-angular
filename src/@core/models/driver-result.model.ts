@@ -9,11 +9,11 @@ export class DriverResultModel {
   public positionText: string;
   public points: string;
   public driver: DriverModel;
-  public constructorModel: ConstructorModel;
+  public ConstructorModel: ConstructorModel;
   public grid: string;
   public laps: string;
   public status: string;
-  public time: FullTimeModel;
-  public fastestLap: FastestLapModel;
+  public Time: FullTimeModel;
+  public FastestLap: FastestLapModel;
 
 }

@@ -5,6 +5,6 @@ export class FastestLapModel {
   public rank: string;
   public lap: string;
   public time: TimeModel;
-  public averageSpeed: AverageSpeedModel;
+  public AverageSpeed: AverageSpeedModel;
 
 }

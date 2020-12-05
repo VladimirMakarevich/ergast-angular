@@ -6,9 +6,9 @@ export class RaceModel {
   public round: string;
   public url: string;
   public raceName: string;
-  public circuit: CircuitModel;
+  public Circuit: CircuitModel;
   public date: string;
   public time: string;
-  public results: DriverResultModel[];
+  public Results: DriverResultModel[];
 
 }

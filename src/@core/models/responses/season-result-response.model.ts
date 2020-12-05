@@ -4,7 +4,7 @@ export class SeasonResultResponseModel {
   public limit: string;
   public offset: string;
   public total: string;
-  public raceTable: RaceTableModel;
+  public RaceTable: RaceTableModel;
 
 }
 

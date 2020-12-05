@@ -6,15 +6,17 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfigService } from '../@core/services/config.service';
 import { appInitialize } from '../@core/initialize/app-initialize';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
+  ],
+  declarations: [
+    AppComponent
   ],
   providers: [
     {

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SeasonResultComponent } from './season-result.component';
 
 const routes: Routes = [
     {
-        path: '', loadChildren: () =>
-            import('./season-result.module').then(m => m.SeasonResultModule)
+        path: '', component: SeasonResultComponent
     }
 ];
 

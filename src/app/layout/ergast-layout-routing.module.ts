@@ -8,6 +8,9 @@ const routes: Routes = [
     component: ErgastLayoutComponent,
     children: [
       {
+        path: '', redirectTo: '/seasons', pathMatch: 'full',
+      },
+      {
         path: 'seasons', loadChildren: () =>
           import('../modules/seasons/seasons.module').then(m => m.SeasonsModule)
       },

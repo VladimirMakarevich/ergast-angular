@@ -1,13 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { ErgastService } from '../../../@core/services/ergast.service';
+import { DestroyableComponent } from '../../../@ergast/components/destroyable.component';
+import { PagingRequestOptionsModel } from '../../../@core/models/requests/paging-request-options.model';
+import { SeasonModel } from '../../../@core/models/season.model';
 
 @Component({
   selector: 'app-seasons',
   templateUrl: './seasons.component.html',
   styleUrls: ['./seasons.component.scss']
 })
-export class SeasonsComponent implements OnInit {
-  ngOnInit(): void {
+export class SeasonsComponent extends DestroyableComponent implements OnInit {
 
+  public seasonModels: SeasonModel[];
+
+  public constructor(
+    private ergastService: ErgastService
+  ) {
+    super();
+  }
+
+  public ngOnInit(): void {
+    this.subscriptions.push(
+      this.ergastService.getSeasons(new PagingRequestOptionsModel())
+        .subscribe(response => {
+          this.seasonModels = response.MRData.SeasonTable.Seasons;
+        })
+    );
   }
 
 }

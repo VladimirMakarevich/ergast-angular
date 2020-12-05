@@ -10,12 +10,12 @@ const routes: Routes = [
   {
     path: 'not-found',
     loadChildren: () =>
-      import('./modules/errors/page-not-found/error-404.module').then(m => m.Error404Module)
+      import('../@ergast/components/errors/page-not-found/error-404.module').then(m => m.Error404Module)
   },
   {
     path: '**',
     loadChildren: () =>
-      import('./modules/errors/page-not-found/error-404.module').then(m => m.Error404Module)
+      import('../@ergast/components/errors/page-not-found/error-404.module').then(m => m.Error404Module)
   },
 ];
 

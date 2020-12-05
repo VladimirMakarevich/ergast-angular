@@ -3,6 +3,8 @@ import { ErgastService } from '../../../@core/services/ergast.service';
 import { DestroyableComponent } from '../../../@ergast/components/destroyable.component';
 import { PagingRequestOptionsModel } from '../../../@core/models/requests/paging-request-options.model';
 import { SeasonModel } from '../../../@core/models/season.model';
+import { Router } from '@angular/router';
+import { Routing } from '../../../@core/constants/routing/routing';
 
 @Component({
   selector: 'app-seasons',
@@ -14,7 +16,8 @@ export class SeasonsComponent extends DestroyableComponent implements OnInit {
   public seasonModels: SeasonModel[];
 
   public constructor(
-    private ergastService: ErgastService
+    private ergastService: ErgastService,
+    private router: Router
   ) {
     super();
   }
@@ -26,6 +29,10 @@ export class SeasonsComponent extends DestroyableComponent implements OnInit {
           this.seasonModels = response.MRData.SeasonTable.Seasons;
         })
     );
+  }
+
+  public async gotoSeasonDetails(year: string): Promise<void> {
+    await this.router.navigate(Routing.ergast.seasonDetails(year));
   }
 
 }

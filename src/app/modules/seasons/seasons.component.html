@@ -1,7 +1,8 @@
-<p>seasons component</p>
-
 <div *ngFor="let seasonModel of seasonModels">
   <p>
     {{seasonModel.season}}
   </p>
+  <div>
+    <button (click)="gotoSeasonDetails(seasonModel.season)">DETAILS</button>
+  </div>
 </div>

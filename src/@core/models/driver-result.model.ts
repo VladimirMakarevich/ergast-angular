@@ -8,7 +8,7 @@ export class DriverResultModel {
   public position: string;
   public positionText: string;
   public points: string;
-  public driver: DriverModel;
+  public Driver: DriverModel;
   public ConstructorModel: ConstructorModel;
   public grid: string;
   public laps: string;

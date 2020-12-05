@@ -24,7 +24,7 @@ export class ErgastService extends HttpBaseService {
     super(http, config);
   }
 
-  public getFullApiUrl(url: string): string {
+  protected getFullApiUrl(url: string): string {
     return this.config.settings.apiUrl + url;
   }
 
@@ -35,15 +35,16 @@ export class ErgastService extends HttpBaseService {
     );
   };
 
-  public getAllWinnersOfDriversChampionships = (paging: PagingRequestOptionsModel): Observable<SeasonResultResponseModel> => {
-    return this.get<PagingRequestOptionsModel, SeasonResultResponseModel>(
+  public getAllWinnersOfDriversChampionships = (paging: PagingRequestOptionsModel)
+    : Observable<RootResponseModel<DriverStandingResponseModel>> => {
+    return this.get<PagingRequestOptionsModel, RootResponseModel<DriverStandingResponseModel>>(
       this.endpoints.ergast.getAllWinnersOfDriversChampionships,
       paging
     );
   };
 
-  public getListOfWinnersByYear = (year: number): Observable<DriverStandingResponseModel> => {
-    return this.get<null, DriverStandingResponseModel>(
+  public getListOfWinnersByYear = (year: string): Observable<RootResponseModel<SeasonResultResponseModel>> => {
+    return this.get<null, RootResponseModel<SeasonResultResponseModel>>(
       stringFormat(this.endpoints.ergast.getListOfWinnersByYear, year),
       null
     );

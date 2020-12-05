@@ -1,1 +1,11 @@
-<p>season result</p>
+season: {{year}}
+<div *ngFor="let race of races">
+  <p>race name: {{race.raceName}}</p>
+  <p>circuit name: {{race.Circuit.circuitName}}</p>
+  <div *ngFor="let result of race.Results">
+    <p>driver: {{result.Driver.givenName}} {{result.Driver.familyName}}</p>
+    <div *ngIf="isWinner(result.Driver.driverId)">
+      <p>WINNER!</p>
+    </div>
+  </div>
+</div>

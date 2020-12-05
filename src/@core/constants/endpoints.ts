@@ -23,15 +23,15 @@ export class Settings {
 
 export class Ergast {
   public get getSeasonList(): string {
-    return '/api/f1/seasons';
+    return '/api/f1/seasons.json';
   }
 
   public get getListOfWinnersByYear(): string {
-    return '/api/f1/{0}/results/1';
+    return '/api/f1/{0}/results/1.json';
   }
 
   public get getAllWinnersOfDriversChampionships(): string {
-    return '/api/f1/driverStandings/1';
+    return '/api/f1/driverStandings/1.json';
   }
 
 }

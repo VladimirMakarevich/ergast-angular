@@ -1,0 +1,27 @@
+app-ergast-layout {
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+    height: 100%;
+
+    #main {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        flex: 1 1 auto;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        min-width: 0;
+
+        > .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 0;
+            width: 100%;
+            min-height: 0;
+            min-width: 0;
+        }
+    }
+}

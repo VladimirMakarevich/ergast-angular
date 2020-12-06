@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { RaceModel } from '../../../@core/models/race.model';
+import { RaceModel } from '../../../../../@core/models/race.model';
 import { head } from 'lodash';
 
 @Component({
@@ -23,7 +23,7 @@ export class RaceCardComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this._isWinner = head(this.race.Results).Driver.driverId !== this.winnerId;
+    this._isWinner = head(this.race.Results).Driver.driverId === this.winnerId;
   }
 
 }

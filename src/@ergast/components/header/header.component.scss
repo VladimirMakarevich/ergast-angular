@@ -1,0 +1,17 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #1976d2c7;
+  color: white;
+  font-style: italic;
+}
+
+.header img {
+  margin: 0 16px;
+}
+

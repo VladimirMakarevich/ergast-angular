@@ -4,7 +4,7 @@
     <span>Select Year</span>
   </div>
 
-  <div class="card-container">
+  <div class="content_card-container">
     <div *ngFor="let seasonModel of seasonModels">
       <app-year-card [year]="seasonModel.season" (seasonEvent)="gotoSeasonDetails($event)"></app-year-card>
     </div>

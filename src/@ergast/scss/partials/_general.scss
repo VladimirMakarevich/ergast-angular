@@ -1,9 +1,28 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
 .title {
   text-transform: uppercase;
   justify-content: center;
   display: flex;
   align-items: center;
-  font-size: 130%;
-  font-weight: 500;
-  letter-spacing: 4px;
+  font-size: 200%;
+  font-weight: 300;
+  letter-spacing: 5px;
+}
+
+.content {
+  display: flex;
+  min-height: min-content;
+  margin: 90px auto 32px;
+  padding: 0 16px 64px;
+  flex-direction: column;
+  align-items: center;
 }

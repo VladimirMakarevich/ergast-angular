@@ -5,6 +5,8 @@ import { VisibilityState } from './enums/visibility-state.enum';
 import { Direction } from './enums/direction.enum';
 import { headerHiddenAnimation } from '../../animations';
 import { DestroyableComponent } from '../destroyable.component';
+import { Routing } from '../../../@core/constants/routing/routing';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +21,12 @@ export class HeaderComponent extends DestroyableComponent implements AfterViewIn
   @HostBinding('@toggle')
   public get toggle(): VisibilityState {
     return this.isVisible ? VisibilityState.Visible : VisibilityState.Hidden;
+  }
+
+  public constructor(
+    private router: Router
+  ) {
+    super();
   }
 
   public ngAfterViewInit(): void {
@@ -41,6 +49,10 @@ export class HeaderComponent extends DestroyableComponent implements AfterViewIn
 
     this.subscriptions.push(scrollUp$.subscribe(() => (this.isVisible = true)));
     this.subscriptions.push(scrollDown.subscribe(() => (this.isVisible = false)));
+  }
+
+  public async handleBack(): Promise<void> {
+    await this.router.navigate(Routing.home.homeUrl());
   }
 
 }

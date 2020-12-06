@@ -1,0 +1,32 @@
+$bkBtnSize: 52px;
+
+.content__center {
+  position: absolute;
+  height: 50px;
+  top: 50%;
+  left: 50%;
+  margin-left: -100px;
+  margin-top: -25px;
+}
+
+.btn-back {
+  margin-top: 48px;
+  text-transform: uppercase;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-weight: 500;
+  letter-spacing: 6px;
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  padding: 8px;
+  line-height: 12px;
+}
+
+.btn-back:not(.highlight-card) {
+  cursor: pointer;
+}
+
+.btn-back:not(.highlight-card):hover {
+  transform: scale(1.01, 1.01);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}

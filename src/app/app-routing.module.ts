@@ -6,22 +6,12 @@ const routes: Routes = [
     path: '',
     loadChildren: () =>
       import('./layout/ergast-layout.module').then(m => m.ErgastLayoutModule),
-  },
-  {
-    path: 'not-found',
-    loadChildren: () =>
-      import('../@ergast/components/errors/page-not-found/error-404.module').then(m => m.Error404Module)
-  },
-  {
-    path: '**',
-    loadChildren: () =>
-      import('../@ergast/components/errors/page-not-found/error-404.module').then(m => m.Error404Module)
-  },
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    enableTracing: true
+    enableTracing: false
   })],
   exports: [RouterModule]
 })

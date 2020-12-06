@@ -17,9 +17,19 @@ const routes: Routes = [
       {
         path: 'season/:seasonYearId', loadChildren: () =>
           import('../modules/season-result/season-result.module').then(m => m.SeasonResultModule)
+      },
+      {
+        path: 'not-found',
+        loadChildren: () =>
+          import('../../@ergast/components/errors/page-not-found/error-404.module').then(m => m.Error404Module)
+      },
+      {
+        path: '**',
+        loadChildren: () =>
+          import('../../@ergast/components/errors/page-not-found/error-404.module').then(m => m.Error404Module)
       }
     ]
-  }
+  },
 ];
 
 @NgModule({

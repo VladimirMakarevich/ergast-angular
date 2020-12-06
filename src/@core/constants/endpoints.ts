@@ -15,6 +15,10 @@ export class Endpoints {
 }
 
 export class Settings {
+  /*
+    Here is the configs and settings of the application,
+    which are usually stored on the backend side and received when initializing the application
+ */
   public get apiUrl(): string {
     return 'http://ergast.com';
   }

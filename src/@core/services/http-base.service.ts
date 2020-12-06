@@ -35,7 +35,6 @@ export abstract class HttpBaseService {
 
   protected abstract getFullApiUrl(url: string): string;
 
-  // TODO: MVV: remove any
   private createParams(queryParams: any): HttpParams {
     let params = new HttpParams();
     each(this.toPathObject(queryParams), (value: string, key) => {
@@ -51,7 +50,6 @@ export abstract class HttpBaseService {
     return params;
   }
 
-  // TODO: MVV: remove any
   private toPathObject(queryParams: any): any {
     const result: { [key: string]: string; } = {};
     each(queryParams, (param, key) => {

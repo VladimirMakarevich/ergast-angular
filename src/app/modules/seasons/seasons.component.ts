@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ErgastService } from '../../../@core/services/ergast.service';
 import { DestroyableComponent } from '../../../@ergast/components/destroyable.component';
-import { PagingRequestOptionsModel } from '../../../@core/models/requests/paging-request-options.model';
 import { SeasonModel } from '../../../@core/models/season.model';
 import { Router } from '@angular/router';
 import { Routing } from '../../../@core/constants/routing/routing';
+import { ErgastSandbox } from '../../sandboxes/ergast.sandbox';
 
 @Component({
   selector: 'app-seasons',
@@ -17,7 +16,7 @@ export class SeasonsComponent extends DestroyableComponent implements OnInit {
   public seasonModels: SeasonModel[];
 
   public constructor(
-    private ergastService: ErgastService,
+    private ergastSandbox: ErgastSandbox,
     private router: Router
   ) {
     super();
@@ -25,10 +24,9 @@ export class SeasonsComponent extends DestroyableComponent implements OnInit {
 
   public ngOnInit(): void {
     this.subscriptions.push(
-      this.ergastService.getSeasons(new PagingRequestOptionsModel())
-        .subscribe(response => {
-          this.seasonModels = response.MRData.SeasonTable.Seasons;
-        })
+      this.ergastSandbox.seasonsFromSubject().subscribe(seasons => {
+        this.seasonModels = seasons;
+      })
     );
   }
 

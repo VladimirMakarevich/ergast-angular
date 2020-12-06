@@ -18,6 +18,24 @@ body {
   letter-spacing: 5px;
 }
 
+.content-no-data {
+  margin-top: 48px;
+  color: #ea0e0d;
+  animation: fadeIn 7s;
+  text-transform: uppercase;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  font-size: 150%;
+  font-weight: 100;
+  letter-spacing: 5px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .content {
   display: flex;
   min-height: min-content;

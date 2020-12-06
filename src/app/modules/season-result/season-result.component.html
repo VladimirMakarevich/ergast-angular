@@ -1,18 +1,10 @@
-<!--<div class="wrapper">-->
-<!--  <div class="title">-->
-<!--    <span>season {{year}}</span>-->
-<!--  </div>-->
-
-<!--  <div class="content">-->
-
-
-<!--  </div>-->
-
-<!--</div>-->
-
 <div class="content">
   <div class="title">
     <span>season {{year}}</span>
+  </div>
+
+  <div class="content-no-data" *ngIf="!isLoading && !races">
+    No data to display
   </div>
 
   <div class="content_card-container">

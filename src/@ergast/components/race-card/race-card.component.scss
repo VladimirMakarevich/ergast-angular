@@ -13,3 +13,19 @@
   box-sizing: border-box;
   box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
+
+.container__card_highlight {
+  background: rgba(224, 119, 104, 0.38);
+}
+
+.container__card__content {
+  display: block;
+}
+
+.container__card__header {
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 100%;
+  letter-spacing: 3px;
+}

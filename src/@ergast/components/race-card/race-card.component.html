@@ -1,11 +1,15 @@
-<div class="container__card">
+<div class="container__card" [ngClass]="{'container__card_highlight' : isWinner}">
 
-  <span>{{race.raceName}}</span>
+  <header class="container__card__header">
+    <span>{{race.raceName}}</span>
+  </header>
 
   <div *ngFor="let result of race.Results">
-          <span [ngClass]="{'content__card-container__highlight' : isWinner(result.Driver.driverId)}">
-            {{result.Driver.givenName}} {{result.Driver.familyName}}
-          </span>
+    <div class="container__card__content">
+      <span [ngClass]="{'content__card-container__highlight' : isWinner}">
+          {{result.Driver.givenName}} {{result.Driver.familyName}}
+      </span>
+    </div>
   </div>
 
 </div>

@@ -1,5 +1,6 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { RaceModel } from '../../../@core/models/race.model';
+import { head } from 'lodash';
 
 @Component({
   selector: 'app-race-card',
@@ -7,7 +8,7 @@ import { RaceModel } from '../../../@core/models/race.model';
   styleUrls: ['./race-card.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class RaceCardComponent {
+export class RaceCardComponent implements OnInit {
 
   @Input()
   public race: RaceModel;
@@ -15,8 +16,14 @@ export class RaceCardComponent {
   @Input()
   public winnerId: string;
 
-  public isWinner(driverId: string): boolean {
-    return driverId === this.winnerId;
+  private _isWinner = false;
+
+  public get isWinner(): boolean {
+    return this._isWinner;
+  }
+
+  public ngOnInit(): void {
+    this._isWinner = head(this.race.Results).Driver.driverId !== this.winnerId;
   }
 
 }

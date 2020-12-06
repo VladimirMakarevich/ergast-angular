@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { DestroyableComponent } from '../../../@ergast/components/destroyable.component';
 import { ActivatedRoute } from '@angular/router';
 import { map, mergeMap } from 'rxjs/operators';
@@ -12,7 +12,8 @@ import { head } from 'lodash';
 @Component({
   selector: 'app-season-result',
   templateUrl: './season-result.component.html',
-  styleUrls: ['./season-result.component.scss']
+  styleUrls: ['./season-result.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SeasonResultComponent extends DestroyableComponent implements OnInit {
 
@@ -22,15 +23,15 @@ export class SeasonResultComponent extends DestroyableComponent implements OnIni
 
   public standingsTable: StandingsTableModel;
 
-  private standingsListModel: StandingsListModel;
-
   // TODO: MVV: refactoring
-  private get winnerId(): string {
+  public get winnerId(): string {
     if (this.standingsListModel?.DriverStandings) {
       return head(this.standingsListModel.DriverStandings).Driver.driverId;
     }
     return '';
   }
+
+  private standingsListModel: StandingsListModel;
 
   public constructor(
     private activatedRoute: ActivatedRoute,
@@ -43,6 +44,8 @@ export class SeasonResultComponent extends DestroyableComponent implements OnIni
     this.subscriptions.push(
       this.activatedRoute.params.pipe(
         map(params => {
+          // TODO: MVV: add constraints if year < 2005 && > 2015 => not found page
+          //  for example, we can store the years (prev page), and then check it where we want in app => use Subject or BihSubject
           this.year = params.seasonYearId;
           return this.year;
         }),
@@ -62,10 +65,6 @@ export class SeasonResultComponent extends DestroyableComponent implements OnIni
         });
       })
     );
-  }
-
-  public isWinner(driverId: string): boolean {
-    return driverId === this.winnerId;
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { RaceModel } from '../../../../../@core/models/race.model';
 import { head } from 'lodash';
+import { DriverModel } from '../../../../../@core/models/driver.model';
 
 @Component({
   selector: 'app-race-card',
@@ -24,6 +25,10 @@ export class RaceCardComponent implements OnInit {
 
   public ngOnInit(): void {
     this._isWinner = head(this.race.Results).Driver.driverId === this.winnerId;
+  }
+
+  public getDriverFullName(driver: DriverModel): string {
+    return driver.givenName + ' ' + driver.familyName;
   }
 
 }

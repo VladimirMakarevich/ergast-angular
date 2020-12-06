@@ -7,7 +7,7 @@
   <div *ngFor="let result of race.Results">
     <div class="container__card__content">
       <span [ngClass]="{'content__card-container__highlight' : isWinner}">
-          {{result.Driver.givenName}} {{result.Driver.familyName}}
+          {{getDriverFullName(result.Driver)}}
       </span>
     </div>
   </div>

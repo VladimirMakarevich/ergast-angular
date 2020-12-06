@@ -6,10 +6,9 @@ import { CommonModule } from '@angular/common';
 import { YearCardModule } from './components/year-card/year-card.module';
 import { RouterModule } from '@angular/router';
 import { ErgastSandbox } from '../../sandboxes/ergast.sandbox';
-import { Observable, of } from 'rxjs';
-import { SeasonModel } from '../../../@core/models/season.model';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { MockErgastSandbox } from '../../../testing/mocks';
 
 
 describe('SeasonsComponent', () => {
@@ -54,15 +53,3 @@ describe('SeasonsComponent', () => {
   });
 
 });
-
-
-class MockErgastSandbox {
-  public seasonsFromSubject = (): Observable<SeasonModel[]> => {
-    const toReturn: Array<SeasonModel> = [];
-    toReturn.push(new SeasonModel('2005', ''));
-    toReturn.push(new SeasonModel('2006', ''));
-    toReturn.push(new SeasonModel('2007', ''));
-    toReturn.push(new SeasonModel('2008', ''));
-    return of(toReturn);
-  };
-}

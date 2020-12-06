@@ -1,0 +1,11 @@
+<div class="container__card">
+
+  <span>{{race.raceName}}</span>
+
+  <div *ngFor="let result of race.Results">
+          <span [ngClass]="{'content__card-container__highlight' : isWinner(result.Driver.driverId)}">
+            {{result.Driver.givenName}} {{result.Driver.familyName}}
+          </span>
+  </div>
+
+</div>

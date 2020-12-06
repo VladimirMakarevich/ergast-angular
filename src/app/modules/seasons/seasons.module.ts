@@ -3,12 +3,14 @@ import { SeasonsComponent } from './seasons.component';
 import { SeasonsRoutingModule } from './seasons-routing.module';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { YearCardModule } from '../../../@ergast/components/year-card/year-card.module';
 
 @NgModule({
   imports: [
     RouterModule,
     SeasonsRoutingModule,
-    CommonModule
+    CommonModule,
+    YearCardModule
   ],
   declarations: [
     SeasonsComponent,

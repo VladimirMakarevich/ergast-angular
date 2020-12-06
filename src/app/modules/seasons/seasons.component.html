@@ -1,8 +1,13 @@
-<div *ngFor="let seasonModel of seasonModels">
-  <p>
-    {{seasonModel.season}}
-  </p>
-  <div>
-    <button (click)="gotoSeasonDetails(seasonModel.season)">DETAILS</button>
+<div class="content">
+
+  <div class="title">
+    <span>Select Year</span>
   </div>
+
+  <div class="card-container">
+    <div *ngFor="let seasonModel of seasonModels">
+      <app-year-card [year]="seasonModel.season" (seasonEvent)="gotoSeasonDetails($event)"></app-year-card>
+    </div>
+  </div>
+
 </div>

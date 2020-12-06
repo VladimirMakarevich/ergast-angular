@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ErgastService } from '../../../@core/services/ergast.service';
 import { DestroyableComponent } from '../../../@ergast/components/destroyable.component';
 import { PagingRequestOptionsModel } from '../../../@core/models/requests/paging-request-options.model';
@@ -9,7 +9,8 @@ import { Routing } from '../../../@core/constants/routing/routing';
 @Component({
   selector: 'app-seasons',
   templateUrl: './seasons.component.html',
-  styleUrls: ['./seasons.component.scss']
+  styleUrls: ['./seasons.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SeasonsComponent extends DestroyableComponent implements OnInit {
 

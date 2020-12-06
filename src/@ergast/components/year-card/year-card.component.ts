@@ -1,21 +1,29 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-year-card',
   templateUrl: './year-card.component.html',
-  styleUrls: ['./year-card.component.scss']
+  styleUrls: ['./year-card.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class YearCardComponent {
 
-  private _year: number;
+  @Output()
+  public seasonEvent: EventEmitter<string> = new EventEmitter<string>();
 
   @Input()
-  public set year(value: number) {
+  public set year(value: string) {
     this._year = value;
   }
 
-  public get year(): number {
+  public get year(): string {
     return this._year;
+  }
+
+  private _year: string;
+
+  public handleSeasonDetails(selectedYear: string): void {
+    this.seasonEvent.emit(selectedYear);
   }
 
 }

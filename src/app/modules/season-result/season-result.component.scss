@@ -1,16 +1,11 @@
-app-season-result {
-
-  .content_card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 24px;
-  }
-
-  .content__card-container__highlight {
-    font-family: sans-serif;
-    color: #125699;
-  }
-
+.content_card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 24px;
 }
 
+.content__card-container__highlight {
+  font-family: sans-serif;
+  color: #125699;
+}

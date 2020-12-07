@@ -5,11 +5,11 @@ import { CommonModule } from '@angular/common';
 import { RaceCardModule } from './components/race-card/race-card.module';
 
 @NgModule({
-    imports: [
-        SeasonResultRoutingModule,
-        CommonModule,
-        RaceCardModule
-    ],
+  imports: [
+    SeasonResultRoutingModule,
+    CommonModule,
+    RaceCardModule
+  ],
   declarations: [
     SeasonResultComponent,
   ],

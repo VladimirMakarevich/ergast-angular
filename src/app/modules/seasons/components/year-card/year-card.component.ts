@@ -1,10 +1,9 @@
-import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-year-card',
   templateUrl: './year-card.component.html',
-  styleUrls: ['./year-card.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./year-card.component.scss']
 })
 export class YearCardComponent {
 

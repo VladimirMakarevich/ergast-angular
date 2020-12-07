@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DestroyableComponent } from '../../../@ergast/components/destroyable.component';
 import { SeasonModel } from '../../../@core/models/season.model';
 import { Router } from '@angular/router';
@@ -8,8 +8,7 @@ import { ErgastSandbox } from '../../sandboxes/ergast.sandbox';
 @Component({
   selector: 'app-seasons',
   templateUrl: './seasons.component.html',
-  styleUrls: ['./seasons.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./seasons.component.scss']
 })
 export class SeasonsComponent extends DestroyableComponent implements OnInit {
 

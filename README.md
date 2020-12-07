@@ -1,14 +1,20 @@
-# ErgastAngular
+# Ergast Angular Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.3.
+This project used Angular version 11.0.3. 
+If you already have an older version of angular installed, you can update as follows:
+1) run `npm uninstall -g angular-cli`
+2) run `npm install -g @angular/cli@latest`
 
-## Development server
+In order to check which version of node to use, you can use the following resource:
+https://gist.github.com/LayZeeDK/c822cc812f75bb07b7c55d07ba2719b3
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Run project server
 
-## Code scaffolding
+Run `ng serve` for a dev server or `ng serve --prod` for a prod server. Navigate to `http://localhost:4200/`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Environments
+
+To change the baseUrl of the API - use `environment's.ts` configs.
 
 ## Build
 
@@ -16,12 +22,25 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test` to execute the unit tests.
 
-## Running end-to-end tests
+## Description
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+When developing this application, I adhered to the approach of stupid components, division of responsibility between modules. An additional middleware `sandbox.ts` (in fact, this is the same intermediate service, just for convenience it is called differently) was introduced to work with services and components, which helps in reducing coupling in applications and helps with state management (in cases where we do not need to pull such libraries as NgRx or Akita into the application).
+
+The project structure is as follows:
+1) @core - constants, API services, models, interceptors, guards, bus.
+2) @ergast - scss, shared components, animations, pipes, directives and etc.
+3) app - layout applications, modules (pages), sandboxes (intermediate services).
+
+NOTES:
+In the models you can see unnecessary fields that are not used, I decided to keep them as this practically does not affect the performance of the application in any way (for this it is necessary that the backend does not send fields that are not used in the contract), but it helps add changes more quickly in case if new requirements are added.
+You can also pay attention to the fact that some fields in the models begin with a capital letter, this is due to the fact that the backend sends json in this form.
+
+## Backend API
+
+http://ergast.com/mrd/
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+If you have any questions, don't hesitate to contact me by `email` or `skype`. (email: `makarevich.dev@outlook.com` / skype: `vova.zhigalov`)

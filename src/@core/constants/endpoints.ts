@@ -16,9 +16,10 @@ export class Endpoints {
 
 }
 
-export class Settings {
+class Settings {
 
   private baseUrl = environment.baseUrl;
+
   /*
     Here is the configs and settings of the application,
     which are usually stored on the backend side and received when initializing the application
@@ -29,7 +30,7 @@ export class Settings {
 
 }
 
-export class Ergast {
+class Ergast {
   public get getSeasonList(): string {
     return '/api/f1/seasons.json';
   }

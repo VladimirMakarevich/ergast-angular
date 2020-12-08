@@ -44,3 +44,7 @@ http://ergast.com/mrd/
 ## Further help
 
 If you have any questions, don't hesitate to contact me by `email` or `skype`. (email: `makarevich.dev@outlook.com` / skype: `vova.zhigalov`)
+
+## Updates
+
+12.07.2020 -- `Develop and Release` branches have been created to work with `GitLab flow`. Tests for services have been added to the `Develop branch` and, also styles have been refactored.

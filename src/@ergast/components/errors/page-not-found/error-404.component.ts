@@ -18,4 +18,5 @@ export class Error404Component {
   public async handleBack(): Promise<void> {
     await this.router.navigate(Routing.home.homeUrl());
   }
+
 }

@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Error404Component } from './error-404.component';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
@@ -8,8 +8,8 @@ describe('Error404Component', () => {
   let component: Error404Component;
   let fixture: ComponentFixture<Error404Component>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
       ],
@@ -17,13 +17,13 @@ describe('Error404Component', () => {
         Error404Component
       ],
     }).compileComponents();
-  });
+  }));
 
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
     fixture = TestBed.createComponent(Error404Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
@@ -39,8 +39,6 @@ describe('Error404Component', () => {
   });
 
   it('Should click', (() => {
-    spyOn(component, 'handleBack');
-
     const debugElement: DebugElement = fixture.debugElement;
     const element = debugElement.query(By.css('.btn-back'));
     const btnBack: HTMLElement = element.nativeElement;

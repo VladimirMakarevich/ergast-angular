@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RaceCardComponent } from './race-card.component';
 import { By } from '@angular/platform-browser';
@@ -10,8 +10,8 @@ describe('RaceCardComponent', () => {
   let component: RaceCardComponent;
   let fixture: ComponentFixture<RaceCardComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
       ],
@@ -20,15 +20,15 @@ describe('RaceCardComponent', () => {
       ],
       providers: []
     }).compileComponents();
-  });
+  }));
 
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
     fixture = TestBed.createComponent(RaceCardComponent);
     component = fixture.componentInstance;
     component.winnerId = '1';
     component.race = getMockRaceModel();
     fixture.detectChanges();
-  });
+  }));
 
   it('Should create', () => {
     expect(component).toBeTruthy();

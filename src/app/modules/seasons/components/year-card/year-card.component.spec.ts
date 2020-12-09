@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -9,8 +9,8 @@ describe('YearCardComponent', () => {
   let component: YearCardComponent;
   let fixture: ComponentFixture<YearCardComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
       ],
@@ -19,14 +19,14 @@ describe('YearCardComponent', () => {
       ],
       providers: []
     }).compileComponents();
-  });
+  }));
 
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
     fixture = TestBed.createComponent(YearCardComponent);
     component = fixture.componentInstance;
     component.year = '2005';
     fixture.detectChanges();
-  });
+  }));
 
   it('Should create', () => {
     expect(component).toBeTruthy();
@@ -42,8 +42,6 @@ describe('YearCardComponent', () => {
   });
 
   it('Should handle `SeasonDetails`', (() => {
-    spyOn(component, 'handleSeasonDetails');
-
     const debugElement: DebugElement = fixture.debugElement;
     const element = debugElement.query(By.css('.card.card-small'));
     const card: HTMLElement = element.nativeElement;

@@ -22,7 +22,7 @@ export class ErgastSandbox {
   }
 
   public seasonsFromSubject = (): Observable<SeasonModel[]> => {
-    if (this.seasonsSubject && this.seasonsSubject.getValue().length) {
+    if (this.seasonsSubject && this.seasonsSubject.getValue()?.length) {
       return of(this.seasonsSubject.getValue());
     }
     return this.getSeasons(new PagingRequestOptionsModel());

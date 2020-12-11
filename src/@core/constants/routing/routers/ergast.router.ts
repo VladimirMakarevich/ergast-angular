@@ -1,4 +1,5 @@
 export class ErgastRouter {
+
   public static seasons = 'seasons';
   public static season = 'season';
   public static notFound = 'not-found';

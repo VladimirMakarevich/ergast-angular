@@ -1,4 +1,5 @@
 export class HomeRouter {
+
   public static home = 'seasons';
 
   public homeUrl(): Array<any> {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RaceModel } from '../../../../../@core/models/race.model';
 import { head } from 'lodash';
 import { DriverModel } from '../../../../../@core/models/driver.model';
@@ -6,8 +6,7 @@ import { DriverModel } from '../../../../../@core/models/driver.model';
 @Component({
   selector: 'app-race-card',
   templateUrl: './race-card.component.html',
-  styleUrls: ['./race-card.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./race-card.component.scss']
 })
 export class RaceCardComponent implements OnInit {
 

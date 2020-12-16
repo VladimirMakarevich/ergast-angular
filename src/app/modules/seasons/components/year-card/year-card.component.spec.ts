@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -9,8 +9,8 @@ describe('YearCardComponent', () => {
   let component: YearCardComponent;
   let fixture: ComponentFixture<YearCardComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
       ],
@@ -21,38 +21,39 @@ describe('YearCardComponent', () => {
     }).compileComponents();
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(YearCardComponent);
-    component = fixture.componentInstance;
-    component.year = '2005';
-    fixture.detectChanges();
-  });
+  describe('yearCard `scope`', () => {
+    beforeEach(waitForAsync(() => {
+      fixture = TestBed.createComponent(YearCardComponent);
+      component = fixture.componentInstance;
+      component.year = '2005';
+      fixture.detectChanges();
+    }));
 
-  it('Should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('Should display `2005`', () => {
-
-    const debugElement: DebugElement = fixture.debugElement;
-    const element = debugElement.query(By.css('span'));
-    const span: HTMLElement = element.nativeElement;
-
-    expect(span.textContent).toEqual('2005');
-  });
-
-  it('Should handle `SeasonDetails`', (() => {
-    spyOn(component, 'handleSeasonDetails');
-
-    const debugElement: DebugElement = fixture.debugElement;
-    const element = debugElement.query(By.css('.card.card-small'));
-    const card: HTMLElement = element.nativeElement;
-
-    card.click();
-
-    fixture.whenStable().then(() => {
-      expect(component.handleSeasonDetails).toHaveBeenCalled();
+    it('should create', () => {
+      expect(component).toBeTruthy();
     });
-  }));
+
+    it('should display `2005`', () => {
+      const debugElement: DebugElement = fixture.debugElement;
+      const element = debugElement.query(By.css('span'));
+      const span: HTMLElement = element.nativeElement;
+
+      expect(span.textContent).toEqual('2005');
+    });
+
+    it('should handle `SeasonDetails`', waitForAsync(() => {
+      spyOn(component, 'handleSeasonDetails');
+
+      const debugElement: DebugElement = fixture.debugElement;
+      const element = debugElement.query(By.css('.card.card-small'));
+      const card: HTMLElement = element.nativeElement;
+
+      card.click();
+
+      fixture.whenStable().then(() => {
+        expect(component.handleSeasonDetails).toHaveBeenCalled();
+      });
+    }));
+  });
 
 });

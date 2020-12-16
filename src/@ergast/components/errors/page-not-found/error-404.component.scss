@@ -20,11 +20,11 @@
   line-height: 12px;
 }
 
-.btn-back:not(.highlight-card) {
+.btn-back:not(.highlight-btn) {
   cursor: pointer;
 }
 
-.btn-back:not(.highlight-card):hover {
+.btn-back:not(.highlight-btn):hover {
   transform: scale(1.01, 1.01);
   box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
 }

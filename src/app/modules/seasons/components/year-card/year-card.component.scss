@@ -24,3 +24,24 @@
   align-items: center;
   letter-spacing: 3px;
 }
+
+.card:not(.highlight-card) {
+  cursor: pointer;
+}
+
+.card:not(.highlight-card):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+a,
+a:visited,
+a:hover {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #125699;
+}
+

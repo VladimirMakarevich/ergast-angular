@@ -1,11 +1,11 @@
 export { ActivatedRoute } from '@angular/router';
 
 import { Params } from '@angular/router';
-import { ReplaySubject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 
 export class ActivatedRouteStub {
 
-  private subject = new ReplaySubject<any>();
+  private subject = new BehaviorSubject<any>(null);
 
   public constructor(
     initialParams?: Params
@@ -15,7 +15,7 @@ export class ActivatedRouteStub {
 
   public readonly params = this.subject.asObservable();
 
-  public setParamMap(params?: any) {
+  public setParamMap(params?: any): void {
     this.subject.next(params);
   }
 

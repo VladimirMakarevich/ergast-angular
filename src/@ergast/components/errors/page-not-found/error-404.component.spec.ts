@@ -8,7 +8,7 @@ describe('Error404Component', () => {
   let component: Error404Component;
   let fixture: ComponentFixture<Error404Component>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
@@ -17,36 +17,40 @@ describe('Error404Component', () => {
         Error404Component
       ],
     }).compileComponents();
-  }));
-
-  beforeEach(waitForAsync(() => {
-    fixture = TestBed.createComponent(Error404Component);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 
-  it('Should display 404 ERROR', () => {
+  describe('error 404 `scope`', () => {
+    beforeEach(waitForAsync(() => {
+      fixture = TestBed.createComponent(Error404Component);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    }));
 
-    const debugElement: DebugElement = fixture.debugElement;
-    const element = debugElement.query(By.css('span'));
-    const span: HTMLElement = element.nativeElement;
-
-    expect(span.textContent).toEqual('404 ERROR');
-  });
-
-  it('Should click', (() => {
-    const debugElement: DebugElement = fixture.debugElement;
-    const element = debugElement.query(By.css('.btn-back'));
-    const btnBack: HTMLElement = element.nativeElement;
-
-    btnBack.click();
-
-    fixture.whenStable().then(() => {
-      expect(component.handleBack).toHaveBeenCalled();
+    it('should create', () => {
+      expect(component).toBeTruthy();
     });
-  }));
+
+    it('should display 404 ERROR', () => {
+      const debugElement: DebugElement = fixture.debugElement;
+      const element = debugElement.query(By.css('span'));
+      const span: HTMLElement = element.nativeElement;
+
+      expect(span.textContent).toEqual('404 ERROR');
+    });
+
+    it('should click', waitForAsync(() => {
+      spyOn(component, 'handleBack');
+
+      const debugElement: DebugElement = fixture.debugElement;
+      const element = debugElement.query(By.css('.btn-back'));
+      const btnBack: HTMLElement = element.nativeElement;
+
+      btnBack.click();
+
+      fixture.whenStable().then(() => {
+        expect(component.handleBack).toHaveBeenCalled();
+      });
+    }));
+  });
+
 });

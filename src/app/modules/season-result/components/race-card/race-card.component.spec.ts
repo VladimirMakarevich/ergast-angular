@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RaceCardComponent } from './race-card.component';
 import { By } from '@angular/platform-browser';
@@ -10,7 +10,7 @@ describe('RaceCardComponent', () => {
   let component: RaceCardComponent;
   let fixture: ComponentFixture<RaceCardComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
@@ -20,40 +20,40 @@ describe('RaceCardComponent', () => {
       ],
       providers: []
     }).compileComponents();
-  }));
-
-  beforeEach(waitForAsync(() => {
-    fixture = TestBed.createComponent(RaceCardComponent);
-    component = fixture.componentInstance;
-    component.winnerId = '1';
-    component.race = getMockRaceModel();
-    fixture.detectChanges();
-  }));
-
-  it('Should create', () => {
-    expect(component).toBeTruthy();
   });
 
-  it('Should display `Fernando Alonso`', () => {
+  describe('raceCard `scope`', () => {
+    beforeEach(() => {
+      fixture = TestBed.createComponent(RaceCardComponent);
+      component = fixture.componentInstance;
+      component.winnerId = '1';
+      component.race = getMockRaceModel();
+      fixture.detectChanges();
+    });
 
-    const debugElement: DebugElement = fixture.debugElement;
-    const element = debugElement.query(By.css('.content__card-container__highlight'));
-    const nativeElement: HTMLElement = element.nativeElement;
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
 
-    expect(nativeElement.textContent).toContain('Fernando Alonso');
+    it('should display `Fernando Alonso`', () => {
+      const debugElement: DebugElement = fixture.debugElement;
+      const element = debugElement.query(By.css('.content__card-container__highlight'));
+      const nativeElement: HTMLElement = element.nativeElement;
+
+      expect(nativeElement.textContent).toContain('Fernando Alonso');
+    });
+
+    it('should display `Sakhir GP`', () => {
+      const debugElement: DebugElement = fixture.debugElement;
+      const element = debugElement.query(By.css('span'));
+      const span: HTMLElement = element.nativeElement;
+
+      expect(span.textContent).toEqual('Sakhir GP');
+    });
+
+    it('should be winner', () => {
+      expect(component.isWinner);
+    });
+
   });
-
-  it('Should display `Sakhir GP`', () => {
-
-    const debugElement: DebugElement = fixture.debugElement;
-    const element = debugElement.query(By.css('span'));
-    const span: HTMLElement = element.nativeElement;
-
-    expect(span.textContent).toEqual('Sakhir GP');
-  });
-
-  it('Should be winner', () => {
-    expect(component.isWinner);
-  });
-
 });

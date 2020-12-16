@@ -15,7 +15,7 @@ describe('SeasonsComponent', () => {
   let component: SeasonsComponent;
   let fixture: ComponentFixture<SeasonsComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
@@ -31,37 +31,40 @@ describe('SeasonsComponent', () => {
         {provide: ErgastSandbox, useClass: MockErgastSandbox}
       ]
     }).compileComponents();
-  }));
-
-  beforeEach(waitForAsync(() => {
-    fixture = TestBed.createComponent(SeasonsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
-
-  it('Should create', () => {
-    expect(component).toBeTruthy();
   });
 
-  it('Should display `SELECT YEAR`', () => {
+  describe('seasons `scope`', () => {
+    beforeEach(waitForAsync(() => {
+      fixture = TestBed.createComponent(SeasonsComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    }));
 
-    const debugElement: DebugElement = fixture.debugElement;
-    const element = debugElement.query(By.css('.title'));
-    const span: HTMLElement = element.nativeElement;
-
-    expect(span.textContent).toEqual('Select Year');
-  });
-
-  it('Should click to `gotoSeasonDetails`', (() => {
-    const debugElement: DebugElement = fixture.debugElement;
-    const element = debugElement.query(By.css('.card'));
-    const gotoSeasonDetails: HTMLElement = element.nativeElement;
-
-    gotoSeasonDetails.click();
-
-    fixture.whenStable().then(() => {
-      expect(component.gotoSeasonDetails).toHaveBeenCalled();
+    it('should create', () => {
+      expect(component).toBeTruthy();
     });
-  }));
+
+    it('should display `SELECT YEAR`', () => {
+      const debugElement: DebugElement = fixture.debugElement;
+      const element = debugElement.query(By.css('.title'));
+      const span: HTMLElement = element.nativeElement;
+
+      expect(span.textContent).toEqual('Select Year');
+    });
+
+    it('should click to `gotoSeasonDetails`', waitForAsync(() => {
+      spyOn(component, 'gotoSeasonDetails');
+
+      const debugElement: DebugElement = fixture.debugElement;
+      const element = debugElement.query(By.css('.card'));
+      const gotoSeasonDetails: HTMLElement = element.nativeElement;
+
+      gotoSeasonDetails.click();
+
+      fixture.whenStable().then(() => {
+        expect(component.gotoSeasonDetails).toHaveBeenCalled();
+      });
+    }));
+  });
 
 });

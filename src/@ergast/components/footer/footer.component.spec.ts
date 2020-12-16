@@ -8,7 +8,7 @@ describe('FooterComponent', () => {
   let component: FooterComponent;
   let fixture: ComponentFixture<FooterComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
@@ -17,25 +17,26 @@ describe('FooterComponent', () => {
         FooterComponent
       ],
     }).compileComponents();
-  }));
-
-  beforeEach(waitForAsync(() => {
-    fixture = TestBed.createComponent(FooterComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 
-  it('Should display Ergast Inc.', () => {
+  describe('footer `scope`', () => {
+    beforeEach(waitForAsync(() => {
+      fixture = TestBed.createComponent(FooterComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    }));
 
-    const debugElement: DebugElement = fixture.debugElement;
-    const element = debugElement.query(By.css('span'));
-    const span: HTMLElement = element.nativeElement;
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
 
-    expect(span.textContent).toEqual('Ergast Inc.');
+    it('should display Ergast Inc.', () => {
+      const debugElement: DebugElement = fixture.debugElement;
+      const element = debugElement.query(By.css('span'));
+      const span: HTMLElement = element.nativeElement;
 
+      expect(span.textContent).toEqual('Ergast Inc.');
+    });
   });
+
 });

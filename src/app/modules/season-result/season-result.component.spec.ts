@@ -4,10 +4,10 @@ import { ErgastSandbox } from '../../sandboxes/ergast.sandbox';
 import { SeasonResultComponent } from './season-result.component';
 import { SeasonResultRoutingModule } from './season-result-routing.module';
 import { MockErgastSandbox } from '../../../testing/mocks';
-import { ActivatedRoute } from "@angular/router";
-import { DebugElement } from "@angular/core";
-import { By } from "@angular/platform-browser";
-import { ActivatedRouteStub } from "../../../testing/activated-route-stub";
+import { ActivatedRoute } from '@angular/router';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { ActivatedRouteStub } from '../../../testing/activated-route-stub';
 
 let activatedRoute: ActivatedRouteStub;
 
@@ -15,9 +15,9 @@ describe('SeasonResultComponent', () => {
   let component: SeasonResultComponent;
   let fixture: ComponentFixture<SeasonResultComponent>;
 
-  activatedRoute = new ActivatedRouteStub({seasonYearId: '2005'});
+  activatedRoute = new ActivatedRouteStub();
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
@@ -37,46 +37,62 @@ describe('SeasonResultComponent', () => {
         }
       ]
     }).compileComponents();
-  }));
-
-  beforeEach(waitForAsync(() => {
-    fixture = TestBed.createComponent(SeasonResultComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
-
-  it('Should create', () => {
-    expect(component).toBeTruthy();
   });
 
-  it('Should display `SEASON 2005`', () => {
-    const debugElement: DebugElement = fixture.debugElement;
-    const element = debugElement.query(By.css('.title'));
-    const span: HTMLElement = element.nativeElement;
+  describe('seasonResult `scope`', () => {
+    beforeEach(() => {
+      fixture = TestBed.createComponent(SeasonResultComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    });
 
-    expect(span.textContent).toEqual('season 2005');
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
   });
 
-  it('Should display `SEASON 2008`', () => {
-    activatedRoute.setParamMap({seasonYearId: '2008'});
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  describe('seasonResult 2008 `scope`', () => {
+    it('should display `SEASON 2008`', () => {
+      activatedRoute.setParamMap({seasonYearId: '2008'});
+      fixture = TestBed.createComponent(SeasonResultComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
 
-    const debugElement: DebugElement = fixture.debugElement;
-    const element = debugElement.query(By.css('.title'));
-    const span: HTMLElement = element.nativeElement;
+      const debugElement: DebugElement = fixture.debugElement;
+      const element = debugElement.query(By.css('.title'));
+      const span: HTMLElement = element.nativeElement;
 
-    expect(span.textContent).toEqual('season 2008');
+      expect(span.textContent).toEqual('season 2008');
+    });
   });
 
-  // it('Should called to `gotoPageNotFound`', (() => {
-  //   activatedRoute.setParamMap({seasonYearId: '2020'});
-  //   component = fixture.componentInstance;
-  //   fixture.detectChanges();
-  //
-  //   fixture.whenStable().then(() => {
-  //     expect(component.gotoPageNotFound).toHaveBeenCalled();
-  //   });
-  // }));
+  describe('seasonResult 2005 `scope`', () => {
+    it('should display `SEASON 2005`', () => {
+      activatedRoute.setParamMap({seasonYearId: '2005'});
+      fixture = TestBed.createComponent(SeasonResultComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+
+      const debugElement: DebugElement = fixture.debugElement;
+      const element = debugElement.query(By.css('.title'));
+      const span: HTMLElement = element.nativeElement;
+
+      expect(span.textContent).toEqual('season 2005');
+    });
+  });
+
+  describe('seasonResult 2020 `scope`', () => {
+    it('should called to `gotoPageNotFound`', waitForAsync(() => {
+      activatedRoute.setParamMap({seasonYearId: '2020'});
+      fixture = TestBed.createComponent(SeasonResultComponent);
+      component = fixture.componentInstance;
+      spyOn(component, 'gotoPageNotFound');
+      fixture.detectChanges();
+
+      fixture.whenStable().then(() => {
+        expect(component.gotoPageNotFound).toHaveBeenCalled();
+      });
+    }));
+  });
 
 });
